@@ -1,0 +1,24 @@
+<!-- Include Supabase library -->
+<script src="cdn.jsdelivr.net"></script>
+
+<script>
+  // Initialize Supabase with your project details
+  const supabase = supabase.createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_ANON_KEY');
+
+  async function loginWithGitHub() {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: {
+        // Replace with your Google Site URL
+        redirectTo: 'sites.google.com' 
+      }
+    });
+    if (error) console.error('Login error:', error.message);
+  }
+</script>
+
+<!-- The Login Button -->
+<button onclick="loginWithGitHub()" style="background:#24292e; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;">
+  <img src="github.githubassets.com" width="20" style="vertical-align:middle; margin-right:8px;">
+  Sign in with GitHub
+</button>
